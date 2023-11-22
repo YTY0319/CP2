@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+
+void maxDistance(int N, int* X, int* Y) {
+	double Max = 0; //최대길이를 저장할 변수
+	double temp = 0; //두 점사이의 거리를 저장할 변수
+
+	for (int i = 0; i < N; i++) {
+		for (int j = i + 1; j < N; j++) {
+			temp = sqrt(pow(X[j] - X[i], 2) + pow(Y[j] - Y[i], 2)); //두 점사이의 거리
+			if (temp > Max) {	//최대길이를 갱신
+				Max = temp;
+			}
+		}
+	}
+	printf("%.10lf", Max); //for문이 끝나면 최대길이를 출력
+}
+
+int main()
+{
+	int N;		//N개의 점
+	int X[10];	//점의 x좌표
+	int Y[10];	//점의 y좌표
+
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++) {
+		scanf("%d %d", &X[i], &Y[i]);
+	}
+
+	maxDistance(N, X, Y); //두 점을 잇는 선분의 최대길이를 구하는 함수
+	return 0;
+}
