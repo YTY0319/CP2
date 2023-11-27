@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+void SHIFT(int K, char* S, char* S_prime, int len) {
+	for (int i = 0; i < len; i++) {
+		S_prime[i] = (((S[i] - 'a') + K) % 26) + 'a';
+	}
+}
+
+int main() {
+	int K; //SHIFT 연산의 횟수
+	int len = 0; //입력받은 문자열의 길이
+	char S[10] = { 0 }; //입력받은 문자열
+	char S_prime[10] = { 0 }; //SHIFT 연산을 한 문자열
+
+	scanf("%d", &K);
+	scanf("%s", S);
+
+	len = strlen(S);
+	SHIFT(K, S, S_prime, len); //SHIFT 연산을 실행하는 함수
+
+	printf("%s", S_prime); //SHIFT연산을 통해 암호화한 문자열 출력
+}
